@@ -1,27 +1,48 @@
-# Previsão de Saída de Colaboradores (Employee Attrition)
+# Employee Attrition Prediction — Machine Learning and Fairness Analysis
 
-> Classificação binária com dados de uma competição Kaggle: EDA, pipelines de pré-processamento, desequilíbrio de classes, comparação de modelos e análise de equidade (fairness).
+A binary classification project comparing machine-learning models for employee attrition, with a focus on validation, class imbalance, and performance differences across demographic groups.
 
-**Mestrado em Business Intelligence & Analytics (ISCAP)**, 2025/26
+**Academic context:** MSc in Business Intelligence & Analytics, ISCAP (2025/26)  
+**Authors:** Beatriz Teixeira and João Coelho
 
-## O problema
-Prever que colaboradores têm maior probabilidade de sair da empresa, para que os RH possam agir a tempo.
+## Project objective
 
-## Abordagem
-1. **EDA**: distribuições, relação com o target, correlações e *data drift* entre treino e teste.
-2. **Pré-processamento**: feature engineering, pipelines do scikit-learn e tratamento do desequilíbrio de classes.
-3. **Modelação**: Logistic Regression como baseline, Random Forest, Gradient Boosting, redes neuronais e KNN, avaliados com validação cruzada estratificada.
-4. **Fairness**: comparação do risco previsto e dos erros por grupos, como género e faixa etária.
+The project explores whether patterns in an employee dataset can be used to estimate attrition risk. The intended analytical use is to understand workforce patterns and evaluate model behaviour, not to automate employment decisions.
 
-## Resultado
-O **Gradient Boosting** foi o modelo final: teve o ROC-AUC mais alto, bom recall na classe minoritária e desempenho estável entre folds. As variáveis mais associadas à saída são remuneração, antiguidade, horas extra e função.
+## Methodology
 
-> O modelo deve **apoiar** a decisão dos RH e não substituí-la, com monitorização periódica da equidade.
+1. **Exploratory data analysis:** inspect distributions, relationships with the target, correlations, and potential train/test data drift.
+2. **Preprocessing:** apply feature engineering and scikit-learn pipelines, including methods to address class imbalance.
+3. **Model comparison:** evaluate Logistic Regression as a baseline alongside Random Forest, Gradient Boosting, neural networks, and K-Nearest Neighbours.
+4. **Validation:** use stratified cross-validation and classification metrics suitable for imbalanced outcomes.
+5. **Fairness analysis:** compare predictions and error patterns across groups such as gender and age bands.
 
-## Stack
-`pandas` · `scikit-learn` · `matplotlib`
+## Results
 
-Dados: [Kaggle Playground Series S3E3](https://www.kaggle.com/competitions/playground-series-s3e3)
+Gradient Boosting was selected as the final model in the reported experiment, achieving the highest ROC-AUC among the evaluated candidates and good recall for the minority class.
 
-## Autores
-Beatriz Teixeira · João Coelho
+The analysis highlighted variables associated with attrition in this dataset, including compensation, tenure, overtime, and job role. These associations should not be interpreted as causal effects.
+
+## Technology stack
+
+- Python and pandas
+- scikit-learn
+- Matplotlib
+- Jupyter Notebook / Google Colab
+
+**Dataset:** [Kaggle Playground Series — Season 3, Episode 3](https://www.kaggle.com/competitions/playground-series-s3e3)
+
+## Reproducing the analysis
+
+1. Download the competition dataset from Kaggle.
+2. Place the files in the location expected by the notebook or update the data-loading paths.
+3. Install the Python dependencies used in the notebook.
+4. Run the analysis from data exploration through model evaluation and fairness checks.
+
+## Responsible use and limitations
+
+- The results are specific to the competition dataset and its target definition.
+- Demographic group comparisons can be affected by sample size, label quality, and threshold choice.
+- Fairness metrics can conflict; no single metric establishes that a model is fair.
+- Predictions should not be used to make or automate hiring, promotion, performance, or termination decisions.
+- Human review, transparency, privacy protection, and ongoing bias monitoring are essential in any real HR analytics setting.
